@@ -5,7 +5,10 @@ on:
 
 jobs:
   issue-automation:
+    
     runs-on: ubuntu-latest
+    permissions:
+      issues: write
 
     steps:
       - name: Welcome new contributor

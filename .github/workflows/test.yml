@@ -1,7 +1,7 @@
 name: Test-Workflow
 on:
   workflow_run:
-    workflows: ["linting"] # Must exactly match the 'name' field of Workflow 1
+    workflows: ["linting-workflow"] # Must exactly match the 'name' field of Workflow 1
     types:
       - completed
 

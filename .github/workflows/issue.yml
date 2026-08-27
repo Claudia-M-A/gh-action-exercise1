@@ -1,0 +1,26 @@
+name: Issue Automation
+on:
+  issues:
+    type: [opened, labeled]
+
+jobs:
+  issue-automation:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Welcome new contributor
+        run: |
+          echo "A new issue has been opened by ${{ github.event.issue.user.login}}"
+          echo "Issue title: ${{ github.event.issue.title}}"
+          echo "Issue Number : ${{github.event.issue.number}}"
+
+      - name: Leave a Comment on the Issue
+        uses: actions/github-script@v7
+        with:
+          script: |
+            github.rest.issues.createComment({
+              issue_number: context.issue.number,
+              owner: context.repo.owner,
+              repo: context.repo.repo,
+              body: '👋 Thank you for opening this issue! Our team will take a look at it shortly.'
+            })
